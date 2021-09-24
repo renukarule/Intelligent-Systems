@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e77b1734-55fd-4aa3-975d-2f8be5515b8f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1YMmZazdQn4GCJf597f1Zzl50yX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="PuzzleAlgorithmHeuristic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.uncc.cci.intelligentsystems.PuzzleAlgorithmHeuristic" />
+      <module name="IS_Project1_AStar" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.uncc.cci.intelligentsystems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.PuzzleAlgorithmHeuristic" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e77b1734-55fd-4aa3-975d-2f8be5515b8f" name="Default Changelist" comment="" />
+      <created>1582760893937</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582760893937</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1238" height="353" key="GridCell.Tab.0.bottom" timestamp="1582765601145">
+      <screen x="0" y="23" width="1280" height="721" />
+    </state>
+    <state width="1238" height="203" key="GridCell.Tab.0.bottom/0.23.1280.716@0.23.1280.716" timestamp="1582763060233" />
+    <state width="1238" height="353" key="GridCell.Tab.0.bottom/0.23.1280.721@0.23.1280.721" timestamp="1582765601145" />
+    <state width="1238" height="203" key="GridCell.Tab.0.bottom/0.23.1280.723@0.23.1280.723" timestamp="1582763692063" />
+    <state width="1238" height="353" key="GridCell.Tab.0.center" timestamp="1582765601144">
+      <screen x="0" y="23" width="1280" height="721" />
+    </state>
+    <state width="1238" height="203" key="GridCell.Tab.0.center/0.23.1280.716@0.23.1280.716" timestamp="1582763060231" />
+    <state width="1238" height="353" key="GridCell.Tab.0.center/0.23.1280.721@0.23.1280.721" timestamp="1582765601144" />
+    <state width="1238" height="203" key="GridCell.Tab.0.center/0.23.1280.723@0.23.1280.723" timestamp="1582763692061" />
+    <state width="1238" height="353" key="GridCell.Tab.0.left" timestamp="1582765601143">
+      <screen x="0" y="23" width="1280" height="721" />
+    </state>
+    <state width="1238" height="203" key="GridCell.Tab.0.left/0.23.1280.716@0.23.1280.716" timestamp="1582763060230" />
+    <state width="1238" height="353" key="GridCell.Tab.0.left/0.23.1280.721@0.23.1280.721" timestamp="1582765601143" />
+    <state width="1238" height="203" key="GridCell.Tab.0.left/0.23.1280.723@0.23.1280.723" timestamp="1582763692061" />
+    <state width="1238" height="353" key="GridCell.Tab.0.right" timestamp="1582765601144">
+      <screen x="0" y="23" width="1280" height="721" />
+    </state>
+    <state width="1238" height="203" key="GridCell.Tab.0.right/0.23.1280.716@0.23.1280.716" timestamp="1582763060232" />
+    <state width="1238" height="353" key="GridCell.Tab.0.right/0.23.1280.721@0.23.1280.721" timestamp="1582765601144" />
+    <state width="1238" height="203" key="GridCell.Tab.0.right/0.23.1280.723@0.23.1280.723" timestamp="1582763692062" />
+  </component>
+</project>
