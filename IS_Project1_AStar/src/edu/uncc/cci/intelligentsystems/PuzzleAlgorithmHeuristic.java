@@ -30,7 +30,6 @@ public class PuzzleAlgorithmHeuristic {
 		System.out.println("Please input initial 8 Puzzle arrangement. Enter 0 for blank tile");
 
 		Scanner scan = new Scanner(System.in);
-		
 		for (int p = 0; p < 3; p++) {
 			for (int q = 0; q < 3; q++) {
 				System.out.println("Please enter [" + p + "] [" + q + "] location of initial 8 Puzzle");
