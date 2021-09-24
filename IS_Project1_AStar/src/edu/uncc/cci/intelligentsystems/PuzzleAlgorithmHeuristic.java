@@ -171,8 +171,13 @@ public class PuzzleAlgorithmHeuristic {
 			for (int j=0; j<3; j++){
 				System.out.print(state[i][j] + " ");
 			}
+			
 			System.out.println();
 		}
 		System.out.println(" ");
+		System.out.println("");
+		System.out.println("  | ");
+		System.out.println("  | ");
+		System.out.println(" \\\'/ \n");
 	}
 }
