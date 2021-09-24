@@ -20,6 +20,7 @@ public class PuzzleAlgorithmHeuristic {
 		PuzzleNodeList solvedPuzzle = new PuzzleNodeList();
 
 		ArrayList<PuzzleNode> nodeVisitedList = new ArrayList<PuzzleNode>();
+		
 
 		System.out.println("Select a Heuristic\nPress\n1. Misplaced Tile Heuristic Implementation\n2. Manhattan Distance Heuristic\n");
 		while (choiceHeuristic != 1 && choiceHeuristic != 2) {
