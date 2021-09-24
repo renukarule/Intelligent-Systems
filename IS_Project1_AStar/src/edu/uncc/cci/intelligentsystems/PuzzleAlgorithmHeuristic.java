@@ -6,7 +6,28 @@ import java.util.Scanner;
 public class PuzzleAlgorithmHeuristic {
 
 	public static void main(String[] args) {
-
+        //@Author Renu Karule 
+		//Moving main function code to method executeAStarAlgorithm()
+		
+		PuzzleAlgorithmHeuristic puzzlealgorithmheuristic = new PuzzleAlgorithmHeuristic();
+		
+		try {
+			
+		puzzlealgorithmheuristic.executeAStarAlgorithm();
+		
+		}catch(Exception e){
+			
+			System.out.println("Something went wrong..."+e.getMessage());
+			
+		}
+		
+	}
+	
+	//@Author Added below method to move all main method code
+	public void executeAStarAlgorithm() {
+		
+		//Execution of application starts here
+		
 		int choiceHeuristic = 0;
 
 		Boolean success = false;
@@ -131,8 +152,8 @@ public class PuzzleAlgorithmHeuristic {
 				}
 			}
 		}
+		
 	}
-	
 	public static Boolean checkDuplicateState(PuzzleState processState, ArrayList<PuzzleNode> vistedNodeList) {
 		for (int p = 0; p < vistedNodeList.size(); p++) {
 			Boolean foundNode = processState.checkSimilarPuzzleState(processState,
