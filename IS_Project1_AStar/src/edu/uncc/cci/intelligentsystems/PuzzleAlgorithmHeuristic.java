@@ -55,8 +55,10 @@ public class PuzzleAlgorithmHeuristic {
 		
 		for (int p = 0; p < 3; p++) {
 			for (int q = 0; q < 3; q++) {
-				System.out.println("Please enter [" + p + "] [" + q + "] location of initial 8 Puzzle");
-				initialPuzzleArrangement[p][q] = scan.nextInt();
+				do{
+					System.out.println("Please enter [" + p + "] [" + q + "] location of initial 8 Puzzle");
+					initialPuzzleArrangement[p][q] = scan.nextInt();
+				}while((initialPuzzleArrangement[p][q] < 0 || initialPuzzleArrangement[p][q] > 9));   
 			}
 		}
 
@@ -65,8 +67,10 @@ public class PuzzleAlgorithmHeuristic {
 		Scanner scan2 = new Scanner(System.in);
 		for (int p = 0; p < 3; p++) {
 			for (int q = 0; q < 3; q++) {
-				System.out.println("Please enter [" + p + "] [" + q + "] location of final 8 Puzzle");
-				goalPuzzleArrangement[p][q] = scan2.nextInt();
+				do{
+					System.out.println("Please enter [" + p + "] [" + q + "] location of final 8 Puzzle");
+					goalPuzzleArrangement[p][q] = scan2.nextInt();
+				}while((goalPuzzleArrangement[p][q] < 0 || goalPuzzleArrangement[p][q] > 9));
 			}
 		}
 
