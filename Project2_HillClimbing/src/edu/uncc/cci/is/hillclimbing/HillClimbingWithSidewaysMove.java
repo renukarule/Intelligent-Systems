@@ -35,7 +35,7 @@ public class HillClimbingWithSidewaysMove {
 	 * @param displayResult
 	 * @return
 	 */
-	public int[] hillClimbingWithSideways(int noOfQueens, boolean displayResult) {
+	public int[] hillClimbingWithSideways(int noOfQueens) {
 		
 		this.noOfQueens = noOfQueens;
 
@@ -43,10 +43,10 @@ public class HillClimbingWithSidewaysMove {
 
 		hillClimbingUtility.findHeuristicCostValue(processNode);
 
-		if (displayResult) {
+		
 			System.out.println("*** BEGIN STATE ***");
 			hillClimbingUtility.displayResult(processNode);
-		}
+		
 		
 		while (!executionSuccess && !executionFailed) {
 			
@@ -75,10 +75,10 @@ public class HillClimbingWithSidewaysMove {
 				
 				executionSuccess = true;
 				
-				if (displayResult) {
+				
 					System.out.println("*** FINAL STATE ***");
 					hillClimbingUtility.displayResult(processNode);
-				}
+				
 				
 			} else if (nextCorrectStep.getHeuristicCost() < processNode.getHeuristicCost()) {
 				
@@ -105,10 +105,10 @@ public class HillClimbingWithSidewaysMove {
 				
 				executionFailed = true;
 				
-				if (displayResult) {
+			
 					System.out.println("*** FLAT MINIMUM STATE ***");
 					hillClimbingUtility.displayResult(processNode);
-				}
+				
 			}
 			
 			if (modifyProcessNode) {

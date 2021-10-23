@@ -11,63 +11,49 @@ public class ExecuteHillClimbing {
 	public static void main(String[] args) {
 
 		Random random = new Random();
-
-		float finalNumberOfSuccessSteps = 0.0f;
-		float finalNumberOfExecutionSuccess = 0.0f;
-		float executionPercentageOfSuccess = 0;
-		float executionAverageOfSuccess = 0;
-
-		float finalNumberOfFailureSteps = 0.0f;
-		float finalNumberOfExecutionFailure = 0.0f;
-		float executionPercentageOfFailure = 0;
-		float executionAverageOfFailure = 0;
-
-		float finalNumberOfAttemptedRestarts = 0.0f;
-		float totalRestartsPerformed = 0.0f;
-		int finalNumberOfExecutionStepsWithRestart = 0;
-
+		
 		int choice;
-		int totalNumberOfQueens;
+		int numberOfQueens;
 		int timesExecuted = random.nextInt(400) + 100;
+
+		float numberOfStepsForSuccess = 0.0f;
+		float numberOfExecutionSuccess = 0.0f;
+		float percentageOfExecutionSuccess = 0;
+		float averageExecutionOfSuccess = 0;
+
+		float numberOfStepsForFailure = 0.0f;
+		float numberOfExecutionFailure = 0.0f;
+		float percentageOfExecutionFailure = 0;
+		float averageExecutionOfFailure = 0;
+
+		float numberOfAttemptedRestarts = 0.0f;
+		float finalRestartsPerformed = 0.0f;
+		int numberOfExecutionStepsWithRestart = 0;
+
+		
 		
 		boolean continueExecution = true;
-		boolean displayResult = false;
 		
-		System.out.println("____________________________________________________________________");
-		System.out.println("ITCS 6150 : Intelligent Systems");
-		System.out.println("Project 2 : Hill Climbing Algorithm");
-		System.out.println();
-		System.out.println("Team Members");
-		System.out.println("1. Apnav Poptani | apoptani@uncc.edu | 801137923");
-		System.out.println("2. Sumit Kawale | skawale1@uncc.edu | 801135233");
-		System.out.println("3. Abhishek Satpute | asatpute@uncc.edu | 801137929");
-		System.out.println("____________________________________________________________________");
+		// Take number of queens as an input from user
 		System.out.println("\n\nPlease provide the number of Queens : ");
 
 		Scanner in = new Scanner(System.in);
 
-		totalNumberOfQueens = in.nextInt();
+		numberOfQueens = in.nextInt();
 
 		//	Minimum 4 queens are required to start
-		if (totalNumberOfQueens < 4) {
-			System.out.println("Atleast 4 Queens are required.");
+		if (numberOfQueens < 4) {
+			System.out.println("Minimum 4 Queens are required to proceed.");
 			System.exit(0);
 		}
 
-		System.out.println("Would you like to display result with execution statistics?");
-		System.out.println("Yes : Y");
-		System.out.println("No : N");
-
-		if (in.next().equalsIgnoreCase("Y"))
-			displayResult = true;
-
 		while (continueExecution) {
 			
-			System.out.println("Enter your choice : ");
-			System.out.println("1. N - Queens problem with Hill Climbing");
-			System.out.println("2. N - Queens problem with Hill Climbing with Sideway Moves");
-			System.out.println("3. N - Queens problem with Random Restart without Sideway Moves");
-			System.out.println("4. N - Queens problem with Random Restart with Sideway Moves");
+			System.out.println("Please select Hill Climbing variant: ");
+			System.out.println("1. N - Queens Hill Climbing Search");
+			System.out.println("2. N - Queens Hill Climbing search with Sideway Moves");
+			System.out.println("3. N - Queens Random Restart Hill Climbing search without Sideway Moves");
+			System.out.println("4. N - Queens Random Restart Hill Climbing search with Sideway Moves");
 			
 			choice = in.nextInt();
 
@@ -80,38 +66,38 @@ public class ExecuteHillClimbing {
 					
 					HillClimbingAlgorithm steepestAscentObj = new HillClimbingAlgorithm();
 					
-					int[] solution = steepestAscentObj.hillClimbingAlgorithm(totalNumberOfQueens, displayResult);
+					int[] solution = steepestAscentObj.hillClimbingAlgorithm(numberOfQueens);
 					
-					finalNumberOfSuccessSteps = finalNumberOfSuccessSteps + solution[0];
+					numberOfStepsForSuccess = numberOfStepsForSuccess + solution[0];
 					
-					finalNumberOfExecutionSuccess = finalNumberOfExecutionSuccess + solution[1];
+					numberOfExecutionSuccess = numberOfExecutionSuccess + solution[1];
 					
-					finalNumberOfFailureSteps = finalNumberOfFailureSteps + solution[2];
+					numberOfStepsForFailure = numberOfStepsForFailure + solution[2];
 					
-					finalNumberOfExecutionFailure = finalNumberOfExecutionFailure + solution[3];
+					numberOfExecutionFailure = numberOfExecutionFailure + solution[3];
 				}
 				
 				System.out.println("");
 				System.out.println("_______________________________________");
 				System.out.println("N - Queens Problem with Hill Climbing");
-				System.out.println("Number of Queens : " + totalNumberOfQueens);
+				System.out.println("Number of Queens : " + numberOfQueens);
 				System.out.println("Algorithm will execute " + timesExecuted + " times");
 				System.out.println("Execution Statistics are : ");
 				
-				if (finalNumberOfExecutionSuccess != 0) {
-					executionPercentageOfSuccess = (finalNumberOfExecutionSuccess / timesExecuted) * 100;
-					executionAverageOfSuccess = finalNumberOfSuccessSteps / finalNumberOfExecutionSuccess;
+				if (numberOfExecutionSuccess != 0) {
+					percentageOfExecutionSuccess = (numberOfExecutionSuccess / timesExecuted) * 100;
+					averageExecutionOfSuccess = numberOfStepsForSuccess / numberOfExecutionSuccess;
 				}
 				
-				if (finalNumberOfExecutionFailure != 0) {
-					executionPercentageOfFailure = (finalNumberOfExecutionFailure / timesExecuted) * 100;
-					executionAverageOfFailure = finalNumberOfFailureSteps / finalNumberOfExecutionFailure;
+				if (numberOfExecutionFailure != 0) {
+					percentageOfExecutionFailure = (numberOfExecutionFailure / timesExecuted) * 100;
+					averageExecutionOfFailure = numberOfStepsForFailure / numberOfExecutionFailure;
 				}
 				
-				System.out.println("Percentage Success : " + String.format("%.2f", executionPercentageOfSuccess) + "%");
-				System.out.println("Percentage Failure : " + String.format("%.2f", executionPercentageOfFailure) + "%");
-				System.out.println("Average Steps for Success : " + String.format("%.2f", executionAverageOfSuccess));
-				System.out.println("Average Steps for Failure : " + String.format("%.2f", executionAverageOfFailure));
+				System.out.println("Percentage Success : " + String.format("%.2f", percentageOfExecutionSuccess) + "%");
+				System.out.println("Percentage Failure : " + String.format("%.2f", percentageOfExecutionFailure) + "%");
+				System.out.println("Average Steps for Success : " + String.format("%.2f", averageExecutionOfSuccess));
+				System.out.println("Average Steps for Failure : " + String.format("%.2f", averageExecutionOfFailure));
 				break;
 
 			//	Hill Climbing with Sideways Move
@@ -121,91 +107,91 @@ public class ExecuteHillClimbing {
 					
 					HillClimbingWithSidewaysMove hillClimbingWithSidewaysMove = new HillClimbingWithSidewaysMove();
 					
-					int[] solution = hillClimbingWithSidewaysMove.hillClimbingWithSideways(totalNumberOfQueens, displayResult);
+					int[] solution = hillClimbingWithSidewaysMove.hillClimbingWithSideways(numberOfQueens);
 					
-					finalNumberOfSuccessSteps = finalNumberOfSuccessSteps + solution[0];
+					numberOfStepsForSuccess = numberOfStepsForSuccess + solution[0];
 					
-					finalNumberOfExecutionSuccess = finalNumberOfExecutionSuccess + solution[1];
+					numberOfExecutionSuccess = numberOfExecutionSuccess + solution[1];
 					
-					finalNumberOfFailureSteps = finalNumberOfFailureSteps + solution[2];
+					numberOfStepsForFailure = numberOfStepsForFailure + solution[2];
 					
-					finalNumberOfExecutionFailure = finalNumberOfExecutionFailure + solution[3];
+					numberOfExecutionFailure = numberOfExecutionFailure + solution[3];
 				}
 				
 				System.out.println("");
 				System.out.println("_______________________________________");
 				System.out.println("N - Queens Problem with Hill Climbing with Sideways Move");
-				System.out.println("Number of Queens : " + totalNumberOfQueens);
+				System.out.println("Number of Queens : " + numberOfQueens);
 				System.out.println("Algorithm will execute " + timesExecuted + " times");
 				System.out.println("Execution Statistics are : ");
 				
-				if (finalNumberOfExecutionSuccess != 0) {
-					executionPercentageOfSuccess = (finalNumberOfExecutionSuccess / timesExecuted) * 100;
-					executionAverageOfSuccess = (finalNumberOfSuccessSteps / finalNumberOfExecutionSuccess);
+				if (numberOfExecutionSuccess != 0) {
+					percentageOfExecutionSuccess = (numberOfExecutionSuccess / timesExecuted) * 100;
+					averageExecutionOfSuccess = (numberOfStepsForSuccess / numberOfExecutionSuccess);
 				}
 				
-				if (finalNumberOfExecutionFailure != 0) {
-					executionPercentageOfFailure = (finalNumberOfExecutionFailure / timesExecuted) * 100;
-					executionAverageOfFailure = (finalNumberOfFailureSteps / finalNumberOfExecutionFailure);
+				if (numberOfExecutionFailure != 0) {
+					percentageOfExecutionFailure = (numberOfExecutionFailure / timesExecuted) * 100;
+					averageExecutionOfFailure = (numberOfStepsForFailure / numberOfExecutionFailure);
 				}
 				
-				System.out.println("Percentage Success : " + String.format("%.2f", executionPercentageOfSuccess) + "%");
-				System.out.println("Percentage Failure : " + String.format("%.2f", executionPercentageOfFailure) + "%");
-				System.out.println("Average Steps for Success : " + String.format("%.2f", executionAverageOfSuccess));
-				System.out.println("Average Steps for Failure : " + String.format("%.2f", executionAverageOfFailure));
+				System.out.println("Percentage Success : " + String.format("%.2f", percentageOfExecutionSuccess) + "%");
+				System.out.println("Percentage Failure : " + String.format("%.2f", percentageOfExecutionFailure) + "%");
+				System.out.println("Average Steps for Success : " + String.format("%.2f", averageExecutionOfSuccess));
+				System.out.println("Average Steps for Failure : " + String.format("%.2f", averageExecutionOfFailure));
 
 				break;
 			
 			//	Random Restart Hill Climbing Without Sideways Move
 			case 3:
 				
-				finalNumberOfExecutionStepsWithRestart = 0;
+				numberOfExecutionStepsWithRestart = 0;
 				
 				for (int i = 0; i < timesExecuted; i++) {
 					
 					RandomRestartHillClimbingWithoutSidewaysMove randomRestartHillClimbingWithoutSidewaysMove = new RandomRestartHillClimbingWithoutSidewaysMove();
 					
-					int[] solution = randomRestartHillClimbingWithoutSidewaysMove.randomRestartHillClimbingWithoutSidewayMove(totalNumberOfQueens, displayResult);
+					int[] solution = randomRestartHillClimbingWithoutSidewaysMove.randomRestartHillClimbingWithoutSidewayMove(numberOfQueens);
 					
-					finalNumberOfSuccessSteps = finalNumberOfSuccessSteps + solution[0];
+					numberOfStepsForSuccess = numberOfStepsForSuccess + solution[0];
 					
-					finalNumberOfExecutionSuccess = finalNumberOfExecutionSuccess + solution[1];
+					numberOfExecutionSuccess = numberOfExecutionSuccess + solution[1];
 					
-					finalNumberOfFailureSteps = finalNumberOfFailureSteps + solution[2];
+					numberOfStepsForFailure = numberOfStepsForFailure + solution[2];
 					
-					finalNumberOfExecutionFailure = finalNumberOfExecutionFailure + solution[3];
+					numberOfExecutionFailure = numberOfExecutionFailure + solution[3];
 					
-					finalNumberOfAttemptedRestarts = finalNumberOfAttemptedRestarts + solution[4];
+					numberOfAttemptedRestarts = numberOfAttemptedRestarts + solution[4];
 					
-					finalNumberOfExecutionStepsWithRestart = finalNumberOfExecutionStepsWithRestart + solution[5];
+					numberOfExecutionStepsWithRestart = numberOfExecutionStepsWithRestart + solution[5];
 				}
 				
 				System.out.println("");
 				System.out.println("_______________________________________");
 				System.out.println("N - Queens Problem with Random Restart Hill Climbing without Sideways Move");
-				System.out.println("Number of Queens : " + totalNumberOfQueens);
+				System.out.println("Number of Queens : " + numberOfQueens);
 				System.out.println("Algorithm will execute " + timesExecuted + " times");
 				System.out.println("Execution Statistics are : ");
 				
-				if (finalNumberOfExecutionSuccess != 0) {
-					executionPercentageOfSuccess = (finalNumberOfExecutionSuccess / timesExecuted) * 100;
-					executionAverageOfSuccess = (finalNumberOfSuccessSteps / finalNumberOfExecutionSuccess);
+				if (numberOfExecutionSuccess != 0) {
+					percentageOfExecutionSuccess = (numberOfExecutionSuccess / timesExecuted) * 100;
+					averageExecutionOfSuccess = (numberOfStepsForSuccess / numberOfExecutionSuccess);
 				}
 				
-				if (finalNumberOfExecutionFailure != 0) {
-					executionPercentageOfFailure = (finalNumberOfExecutionFailure / timesExecuted) * 100;
-					executionAverageOfFailure = (finalNumberOfFailureSteps / finalNumberOfExecutionFailure);
+				if (numberOfExecutionFailure != 0) {
+					percentageOfExecutionFailure = (numberOfExecutionFailure / timesExecuted) * 100;
+					averageExecutionOfFailure = (numberOfStepsForFailure / numberOfExecutionFailure);
 				}
 				
-				if (finalNumberOfExecutionStepsWithRestart != 0) {
-					totalRestartsPerformed = (finalNumberOfAttemptedRestarts / finalNumberOfExecutionStepsWithRestart);
+				if (numberOfExecutionStepsWithRestart != 0) {
+					finalRestartsPerformed = (numberOfAttemptedRestarts / numberOfExecutionStepsWithRestart);
 				}
 				
-				System.out.println("Percentage Success : " + String.format("%.2f", executionPercentageOfSuccess) + "%");
-				System.out.println("Percentage Failure : " + String.format("%.2f", executionPercentageOfFailure) + "%");
-				System.out.println("Average Steps for Success : " + String.format("%.2f", executionAverageOfSuccess));
-				System.out.println("Average Steps for Failure : " + String.format("%.2f", executionAverageOfFailure));
-				System.out.println("Average Restarts Done : " + String.format("%.2f", totalRestartsPerformed));
+				System.out.println("Percentage Success : " + String.format("%.2f", percentageOfExecutionSuccess) + "%");
+				System.out.println("Percentage Failure : " + String.format("%.2f", percentageOfExecutionFailure) + "%");
+				System.out.println("Average Steps for Success : " + String.format("%.2f", averageExecutionOfSuccess));
+				System.out.println("Average Steps for Failure : " + String.format("%.2f", averageExecutionOfFailure));
+				System.out.println("Average Restarts Done : " + String.format("%.2f", finalRestartsPerformed));
 				break;
 				
 			//	Random Restart Hill Climbing With Sideways Move
@@ -215,47 +201,47 @@ public class ExecuteHillClimbing {
 				
 					RandomRestartHillClimbingWithSidewaysMove randomRestartHillClimbingWithSidewaysMove = new RandomRestartHillClimbingWithSidewaysMove();
 					
-					int[] solution = randomRestartHillClimbingWithSidewaysMove.randomRestartHillClimbingWithSidewayMove(totalNumberOfQueens, displayResult);
+					int[] solution = randomRestartHillClimbingWithSidewaysMove.randomRestartHillClimbingWithSidewayMove(numberOfQueens);
 					
-					finalNumberOfSuccessSteps = finalNumberOfSuccessSteps + solution[0];
+					numberOfStepsForSuccess = numberOfStepsForSuccess + solution[0];
 					
-					finalNumberOfExecutionSuccess = finalNumberOfExecutionSuccess + solution[1];
+					numberOfExecutionSuccess = numberOfExecutionSuccess + solution[1];
 					
-					finalNumberOfFailureSteps = finalNumberOfFailureSteps + solution[2];
+					numberOfStepsForFailure = numberOfStepsForFailure + solution[2];
 					
-					finalNumberOfExecutionFailure = finalNumberOfExecutionFailure + solution[3];
+					numberOfExecutionFailure = numberOfExecutionFailure + solution[3];
 					
-					finalNumberOfAttemptedRestarts = finalNumberOfAttemptedRestarts + solution[4];
+					numberOfAttemptedRestarts = numberOfAttemptedRestarts + solution[4];
 					
-					finalNumberOfExecutionStepsWithRestart = finalNumberOfExecutionStepsWithRestart + solution[5];
+					numberOfExecutionStepsWithRestart = numberOfExecutionStepsWithRestart + solution[5];
 				}
 				
 				System.out.println("");
 				System.out.println("_______________________________________");
 				System.out.println("N - Queens Problem with Random Restart Hill Climbing with Sideways Move");
-				System.out.println("Number of Queens : " + totalNumberOfQueens);
+				System.out.println("Number of Queens : " + numberOfQueens);
 				System.out.println("Algorithm will execute " + timesExecuted + " times");
 				System.out.println("Execution Statistics are : ");
 				
-				if (finalNumberOfExecutionSuccess != 0) {
-					executionPercentageOfSuccess = (finalNumberOfExecutionSuccess / timesExecuted) * 100;
-					executionAverageOfSuccess = (finalNumberOfSuccessSteps / finalNumberOfExecutionSuccess);
+				if (numberOfExecutionSuccess != 0) {
+					percentageOfExecutionSuccess = (numberOfExecutionSuccess / timesExecuted) * 100;
+					averageExecutionOfSuccess = (numberOfStepsForSuccess / numberOfExecutionSuccess);
 				}
 				
-				if (finalNumberOfExecutionFailure != 0) {
-					executionPercentageOfFailure = (finalNumberOfExecutionFailure / timesExecuted) * 100;
-					executionAverageOfFailure = (finalNumberOfFailureSteps / finalNumberOfExecutionFailure);
+				if (numberOfExecutionFailure != 0) {
+					percentageOfExecutionFailure = (numberOfExecutionFailure / timesExecuted) * 100;
+					averageExecutionOfFailure = (numberOfStepsForFailure / numberOfExecutionFailure);
 				}
 
-				if (finalNumberOfExecutionStepsWithRestart != 0) {
-					totalRestartsPerformed = (finalNumberOfAttemptedRestarts / finalNumberOfExecutionStepsWithRestart);
+				if (numberOfExecutionStepsWithRestart != 0) {
+					finalRestartsPerformed = (numberOfAttemptedRestarts / numberOfExecutionStepsWithRestart);
 				}
 				
-				System.out.println("Percentage Success : " + String.format("%.2f", executionPercentageOfSuccess) + "%");
-				System.out.println("Percentage Failure : " + String.format("%.2f", executionPercentageOfFailure) + "%");
-				System.out.println("Average Steps for Success : " + String.format("%.2f", executionAverageOfSuccess));
-				System.out.println("Average Steps for Failure : " + String.format("%.2f", executionAverageOfFailure));
-				System.out.println("Average Restarts Done : " + String.format("%.2f", totalRestartsPerformed));
+				System.out.println("Percentage Success : " + String.format("%.2f", percentageOfExecutionSuccess) + "%");
+				System.out.println("Percentage Failure : " + String.format("%.2f", percentageOfExecutionFailure) + "%");
+				System.out.println("Average Steps for Success : " + String.format("%.2f", averageExecutionOfSuccess));
+				System.out.println("Average Steps for Failure : " + String.format("%.2f", averageExecutionOfFailure));
+				System.out.println("Average Restarts Done : " + String.format("%.2f", finalRestartsPerformed));
 				break;
 
 			default:
@@ -263,7 +249,7 @@ public class ExecuteHillClimbing {
 				break;
 			}
 
-			System.out.println("Continue execution?");
+			System.out.println("Do you want to continue execution?");
 			System.out.println("Y : Yes");
 			System.out.println("N : No");
 			
@@ -271,21 +257,21 @@ public class ExecuteHillClimbing {
 			
 			if ("Y".equalsIgnoreCase(continueChoice)) {
 				
-				executionPercentageOfSuccess = 0.0f;
-				executionPercentageOfFailure = 0.0f;
+				percentageOfExecutionSuccess = 0.0f;
+				percentageOfExecutionFailure = 0.0f;
 				
-				executionAverageOfSuccess = 0.0f;
-				executionAverageOfFailure = 0.0f;
+				averageExecutionOfSuccess = 0.0f;
+				averageExecutionOfFailure = 0.0f;
 				
-				finalNumberOfSuccessSteps = 0.0f;
-				finalNumberOfExecutionSuccess = 0.0f;
+				numberOfStepsForSuccess = 0.0f;
+				numberOfExecutionSuccess = 0.0f;
 				
-				finalNumberOfFailureSteps = 0.0f;
-				finalNumberOfExecutionFailure = 0.0f;
+				numberOfStepsForFailure = 0.0f;
+				numberOfExecutionFailure = 0.0f;
 				
-				totalRestartsPerformed = 0.0f;
-				finalNumberOfAttemptedRestarts = 0.0f;
-				finalNumberOfExecutionStepsWithRestart = 0;
+				finalRestartsPerformed = 0.0f;
+				numberOfAttemptedRestarts = 0.0f;
+				numberOfExecutionStepsWithRestart = 0;
 				
 				continueExecution = true;
 			} else {

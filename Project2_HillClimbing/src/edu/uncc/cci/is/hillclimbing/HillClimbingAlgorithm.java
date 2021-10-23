@@ -32,7 +32,7 @@ public class HillClimbingAlgorithm {
 	 * @param displayResult
 	 * @return
 	 */
-	public int[] hillClimbingAlgorithm(int noOfQueens, boolean displayResult) {
+	public int[] hillClimbingAlgorithm(int noOfQueens) {
 	
 		this.noOfQueens = noOfQueens;
 
@@ -40,10 +40,10 @@ public class HillClimbingAlgorithm {
 
 		hillClimbingUtility.findHeuristicCostValue(processNode);
 
-		if (displayResult) {
+		
 			System.out.println("*** BEGIN STATE ***");
 			hillClimbingUtility.displayResult(processNode);
-		}
+		
 		
 		while (!executionSuccess && !executionFailed) {
 			
@@ -66,10 +66,10 @@ public class HillClimbingAlgorithm {
 				
 				executionSuccess = true;
 				
-				if (displayResult) {
+				
 					System.out.println("*** FINAL STATE ***");
 					hillClimbingUtility.displayResult(processNode);
-				}
+			
 				
 			} else if (nextCorrectStep.getHeuristicCost() < processNode.getHeuristicCost()) {
 				processNode = nextCorrectStep;
@@ -82,10 +82,10 @@ public class HillClimbingAlgorithm {
 				
 				executionFailed = true;
 				
-				if (displayResult) {
+				
 					System.out.println("*** Local Minima State ***");
 					hillClimbingUtility.displayResult(processNode);
-				}
+				
 			}
 		}
 

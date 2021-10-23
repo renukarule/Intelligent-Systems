@@ -39,7 +39,7 @@ public class RandomRestartHillClimbingWithSidewaysMove {
 	 * @param displayResult
 	 * @return
 	 */
-	public int[] randomRestartHillClimbingWithSidewayMove(int noOfQueens, boolean displayResult) {
+	public int[] randomRestartHillClimbingWithSidewayMove(int noOfQueens) {
 
 		this.noOfQueens = noOfQueens;
 
@@ -47,10 +47,10 @@ public class RandomRestartHillClimbingWithSidewaysMove {
 
 		hillClimbingUtility.findHeuristicCostValue(processNode);
 
-		if (displayResult) {
+	
 			System.out.println("*** BEGIN STATE ***");
 			hillClimbingUtility.displayResult(processNode);
-		}
+		
 		
 		while (!executionSuccess && !executionFailed) {
 		
@@ -79,10 +79,10 @@ public class RandomRestartHillClimbingWithSidewaysMove {
 				
 				executionSuccess = true;
 				
-				if (displayResult) {
+				
 					System.out.println("*** GOAL STATE ***");
 					hillClimbingUtility.displayResult(processNode);
-				}
+				
 				
 			} else if (nextCorrectStep.getHeuristicCost() < processNode.getHeuristicCost()) {
 				
