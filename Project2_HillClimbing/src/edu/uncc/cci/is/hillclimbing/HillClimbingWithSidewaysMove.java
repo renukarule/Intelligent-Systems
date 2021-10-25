@@ -35,13 +35,13 @@ public class HillClimbingWithSidewaysMove {
 	 * @param displayResult
 	 * @return
 	 */
-	public int[] hillClimbingWithSideways(int noOfQueens) {
+	public int[] hillClimbingSearchWithSideways(int noOfQueens) {
 		
 		this.noOfQueens = noOfQueens;
 
-		ProcessNode processNode = hillClimbingUtility.determineArbitraryArrangement(noOfQueens);
+		ProcessNode processNode = hillClimbingUtility.formArbitraryArrangement(noOfQueens);
 
-		hillClimbingUtility.findHeuristicCostValue(processNode);
+		hillClimbingUtility.determineHeuristicCostValue(processNode);
 
 		
 			System.out.println("*** BEGIN STATE ***");
@@ -53,18 +53,18 @@ public class HillClimbingWithSidewaysMove {
 			modifyProcessNode = false;
 
 			//	determine possible next steps
-			nextSteps = hillClimbingUtility.determineNextSteps(processNode);
+			nextSteps = hillClimbingUtility.discoverNextSteps(processNode);
 
 			//	find heuristic for next steps
 			for (int p = 0; p < nextSteps.size(); p++) {
-				hillClimbingUtility.findHeuristicCostValue(nextSteps.get(p));
+				hillClimbingUtility.determineHeuristicCostValue(nextSteps.get(p));
 			}
 
 			//	find the next correct step based on heuristics
-			nextCorrectStep = hillClimbingUtility.determineNextBestStep(nextSteps);
+			nextCorrectStep = hillClimbingUtility.discoverNextBestStep(nextSteps);
 
 			if (nextCorrectStep.getHeuristicCost() == processNode.getHeuristicCost()) {
-				nextCorrectStep = hillClimbingUtility.determineNextBestStep(nextSteps);
+				nextCorrectStep = hillClimbingUtility.discoverNextBestStep(nextSteps);
 			}
 			
 			if (processNode.getHeuristicCost() == 0) {

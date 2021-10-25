@@ -19,7 +19,7 @@ public class HillClimbingUtility {
 	 * @param processNode
 	 * @return
 	 */
-	public List<ProcessNode> determineNextSteps(ProcessNode processNode) {
+	public List<ProcessNode> discoverNextSteps(ProcessNode processNode) {
 
 		List<ProcessNode> nextStepsList = new ArrayList<ProcessNode>();
 
@@ -50,7 +50,7 @@ public class HillClimbingUtility {
 					
 					int[][] currentState = new int[processNode.getPosition().length][processNode.getPosition().length];
 					
-					transferNodeStateData(processNode.getPosition(), currentState);
+					passNodeStateData(processNode.getPosition(), currentState);
 					
 					nextNodeQueenRw = rw;
 					
@@ -67,11 +67,11 @@ public class HillClimbingUtility {
 		return nextStepsList;
 	}
 
-	public void findHeuristicCostValue(ProcessNode processNode) {
+	public void determineHeuristicCostValue(ProcessNode processNode) {
 
 		int[][] processNodeState = new int[processNode.getPosition().length][processNode.getPosition().length];
 		
-		transferNodeStateData(processNode.getPosition(), processNodeState);
+		passNodeStateData(processNode.getPosition(), processNodeState);
 		
 		int[] queenRowPosition = new int[processNode.getPosition().length];
 		int[] queenColumnPosition = new int[processNode.getPosition().length];
@@ -125,7 +125,7 @@ public class HillClimbingUtility {
 	 * @param processNodeStateFrom
 	 * @param processNodeStateTo
 	 */
-	public void transferNodeStateData(int[][] processNodeStateFrom, int[][] processNodeStateTo) {
+	public void passNodeStateData(int[][] processNodeStateFrom, int[][] processNodeStateTo) {
 		for (int p = 0; p < processNodeStateFrom.length; p++) {
 			for (int q = 0; q < processNodeStateFrom.length; q++) {
 				processNodeStateTo[p][q] = processNodeStateFrom[p][q];
@@ -139,7 +139,7 @@ public class HillClimbingUtility {
 	 * @param processNodeList
 	 * @return
 	 */
-	public ProcessNode determineNextBestStep(List<ProcessNode> processNodeList) {
+	public ProcessNode discoverNextBestStep(List<ProcessNode> processNodeList) {
 		
 		PriorityQueue<ProcessNode> processNodeQueue = new PriorityQueue<ProcessNode>(processNodeList.size(), new CompareHeuristicCost());
 		
@@ -178,7 +178,7 @@ public class HillClimbingUtility {
 	 * @param noOfQueens
 	 * @return
 	 */
-	public ProcessNode determineArbitraryArrangement(int noOfQueens) {
+	public ProcessNode formArbitraryArrangement(int noOfQueens) {
 		
 		Random random = new Random();
 		

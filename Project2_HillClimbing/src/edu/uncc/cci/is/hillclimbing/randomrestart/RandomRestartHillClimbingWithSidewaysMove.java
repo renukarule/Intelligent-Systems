@@ -8,20 +8,21 @@ import edu.uncc.cci.is.hillclimbing.util.HillClimbingUtility;
 
 public class RandomRestartHillClimbingWithSidewaysMove {
 
-	public int noOfQueens = 0;
-	public int normalSteps = 0;
+	public int numberOfQueens = 0;
+	public int steps = 0;
 	public int numberOfSideSteps = 0;
-	public int numberOfCorrectSteps = 0;
-	public int numberOfIncorrectSteps = 0;
+	public int noOfCorrectSteps = 0;
+	public int noOfIncorrectSteps = 0;
 	public int numberOfExecutionSuccess = 0;
 	public int numberOfExecutionFailure = 0;
-	public int numberOfAttemptedRestarts = 0;
+	public int noOfAttemptedRestarts = 0;
 	public int restartCounter = 0;
-	public int maxSideWalkCount = 100;
+	public int maximumSideWalkCount = 100;
 	
-	public boolean executionSuccess = false;
-	public boolean executionFailed = false;
 	public boolean restartFlag = false;
+	public boolean executionSuccessFlag = false;
+	public boolean executionFailedFlag = false;
+	
 	public boolean modifyProcessNode = false;
 	
 	public int[] executionStatistics = new int[6];
@@ -39,45 +40,45 @@ public class RandomRestartHillClimbingWithSidewaysMove {
 	 * @param displayResult
 	 * @return
 	 */
-	public int[] randomRestartHillClimbingWithSidewayMove(int noOfQueens) {
+	public int[] randomRestartHCSearchWithSidewayMove(int numberOfQueens) {
 
-		this.noOfQueens = noOfQueens;
+		this.numberOfQueens = numberOfQueens;
 
-		ProcessNode processNode = hillClimbingUtility.determineArbitraryArrangement(noOfQueens);
+		ProcessNode processNode = hillClimbingUtility.formArbitraryArrangement(numberOfQueens);
 
-		hillClimbingUtility.findHeuristicCostValue(processNode);
+		hillClimbingUtility.determineHeuristicCostValue(processNode);
 
 	
 			System.out.println("*** BEGIN STATE ***");
 			hillClimbingUtility.displayResult(processNode);
 		
 		
-		while (!executionSuccess && !executionFailed) {
+		while (!executionSuccessFlag && !executionFailedFlag) {
 		
 			modifyProcessNode = false;
 
 			//	determine possible next steps
-			nextSteps = hillClimbingUtility.determineNextSteps(processNode);
+			nextSteps = hillClimbingUtility.discoverNextSteps(processNode);
 
 			//	find heuristic for next steps
 			for (int p = 0; p < nextSteps.size(); p++) {
-				hillClimbingUtility.findHeuristicCostValue(nextSteps.get(p));
+				hillClimbingUtility.determineHeuristicCostValue(nextSteps.get(p));
 			}
 
 			//	find the next correct step based on heuristics
-			nextCorrectStep = hillClimbingUtility.determineNextBestStep(nextSteps);
+			nextCorrectStep = hillClimbingUtility.discoverNextBestStep(nextSteps);
 
 			if (nextCorrectStep.getHeuristicCost() == processNode.getHeuristicCost()) {
-				nextCorrectStep = hillClimbingUtility.determineNextBestStep(nextSteps);
+				nextCorrectStep = hillClimbingUtility.discoverNextBestStep(nextSteps);
 			}
 			
 			if (processNode.getHeuristicCost() == 0) {
 				
-				numberOfCorrectSteps = +normalSteps;
+				noOfCorrectSteps = +steps;
 				
 				numberOfExecutionSuccess++;
 				
-				executionSuccess = true;
+				executionSuccessFlag = true;
 				
 				
 					System.out.println("*** GOAL STATE ***");
@@ -87,18 +88,18 @@ public class RandomRestartHillClimbingWithSidewaysMove {
 			} else if (nextCorrectStep.getHeuristicCost() < processNode.getHeuristicCost()) {
 				
 				numberOfSideSteps = 0;
-				normalSteps++;
+				steps++;
 				modifyProcessNode = true;
-			} else if (nextCorrectStep.getHeuristicCost() == processNode.getHeuristicCost() && numberOfSideSteps < maxSideWalkCount) {																													
+			} else if (nextCorrectStep.getHeuristicCost() == processNode.getHeuristicCost() && numberOfSideSteps < maximumSideWalkCount) {																													
 
 				numberOfSideSteps++;
-				normalSteps++;
+				steps++;
 				modifyProcessNode = true;
 			} else {
 
-				processNode = hillClimbingUtility.determineArbitraryArrangement(noOfQueens);
-				hillClimbingUtility.findHeuristicCostValue(processNode);
-				numberOfAttemptedRestarts++;
+				processNode = hillClimbingUtility.formArbitraryArrangement(numberOfQueens);
+				hillClimbingUtility.determineHeuristicCostValue(processNode);
+				noOfAttemptedRestarts++;
 				restartFlag = true;
 			}
 			if (modifyProcessNode) {
@@ -111,15 +112,15 @@ public class RandomRestartHillClimbingWithSidewaysMove {
 		}
 
 		//	collect execution statistics
-		executionStatistics[0] = numberOfCorrectSteps;
+		executionStatistics[0] = noOfCorrectSteps;
 		
 		executionStatistics[1] = numberOfExecutionSuccess;
 		
-		executionStatistics[2] = numberOfIncorrectSteps;
+		executionStatistics[2] = noOfIncorrectSteps;
 		
 		executionStatistics[3] = numberOfExecutionFailure;
 		
-		executionStatistics[4] = numberOfAttemptedRestarts;
+		executionStatistics[4] = noOfAttemptedRestarts;
 		
 		executionStatistics[5] = restartCounter;
 

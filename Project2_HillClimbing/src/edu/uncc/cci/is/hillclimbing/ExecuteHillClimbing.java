@@ -14,7 +14,7 @@ public class ExecuteHillClimbing {
 		
 		int choice;
 		int numberOfQueens;
-		int timesExecuted = random.nextInt(400) + 100;
+		int timesExecuted = random.nextInt(100) + 100;
 
 		float numberOfStepsForSuccess = 0.0f;
 		float numberOfExecutionSuccess = 0.0f;
@@ -34,10 +34,13 @@ public class ExecuteHillClimbing {
 		
 		boolean continueExecution = true;
 		
+		Scanner in = new Scanner(System.in);
+		
 		// Take number of queens as an input from user
+		while (continueExecution) {
 		System.out.println("\n\nPlease provide the number of Queens : ");
 
-		Scanner in = new Scanner(System.in);
+		
 
 		numberOfQueens = in.nextInt();
 
@@ -47,7 +50,7 @@ public class ExecuteHillClimbing {
 			System.exit(0);
 		}
 
-		while (continueExecution) {
+		
 			
 			System.out.println("Please select Hill Climbing variant: ");
 			System.out.println("1. N - Queens Hill Climbing Search");
@@ -107,7 +110,7 @@ public class ExecuteHillClimbing {
 					
 					HillClimbingWithSidewaysMove hillClimbingWithSidewaysMove = new HillClimbingWithSidewaysMove();
 					
-					int[] solution = hillClimbingWithSidewaysMove.hillClimbingWithSideways(numberOfQueens);
+					int[] solution = hillClimbingWithSidewaysMove.hillClimbingSearchWithSideways(numberOfQueens);
 					
 					numberOfStepsForSuccess = numberOfStepsForSuccess + solution[0];
 					
@@ -151,7 +154,7 @@ public class ExecuteHillClimbing {
 					
 					RandomRestartHillClimbingWithoutSidewaysMove randomRestartHillClimbingWithoutSidewaysMove = new RandomRestartHillClimbingWithoutSidewaysMove();
 					
-					int[] solution = randomRestartHillClimbingWithoutSidewaysMove.randomRestartHillClimbingWithoutSidewayMove(numberOfQueens);
+					int[] solution = randomRestartHillClimbingWithoutSidewaysMove.randomRestartHCSearchWithoutSidewayMove(numberOfQueens);
 					
 					numberOfStepsForSuccess = numberOfStepsForSuccess + solution[0];
 					
@@ -201,7 +204,7 @@ public class ExecuteHillClimbing {
 				
 					RandomRestartHillClimbingWithSidewaysMove randomRestartHillClimbingWithSidewaysMove = new RandomRestartHillClimbingWithSidewaysMove();
 					
-					int[] solution = randomRestartHillClimbingWithSidewaysMove.randomRestartHillClimbingWithSidewayMove(numberOfQueens);
+					int[] solution = randomRestartHillClimbingWithSidewaysMove.randomRestartHCSearchWithSidewayMove(numberOfQueens);
 					
 					numberOfStepsForSuccess = numberOfStepsForSuccess + solution[0];
 					
