@@ -36,7 +36,7 @@ public class RandomRestartHillClimbingWithSidewaysMove {
 	/**
 	 * Random Restart Hill Climbing with Sideways Move
 	 * 
-	 * @param noOfQueens
+	 * @param numberOfQueens
 	 * @param displayResult
 	 * @return
 	 */
@@ -49,7 +49,7 @@ public class RandomRestartHillClimbingWithSidewaysMove {
 		hillClimbingUtility.determineHeuristicCostValue(processNode);
 
 	
-			System.out.println("*** BEGIN STATE ***");
+			System.out.println("### BEGIN STATE ###");
 			hillClimbingUtility.displayResult(processNode);
 		
 		
@@ -81,7 +81,7 @@ public class RandomRestartHillClimbingWithSidewaysMove {
 				executionSuccessFlag = true;
 				
 				
-					System.out.println("*** GOAL STATE ***");
+					System.out.println("### GOAL STATE ###");
 					hillClimbingUtility.displayResult(processNode);
 				
 				

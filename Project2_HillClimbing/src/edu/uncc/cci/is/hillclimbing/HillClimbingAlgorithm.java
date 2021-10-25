@@ -28,7 +28,7 @@ public class HillClimbingAlgorithm {
 	/**
 	 * HillClimb Algorithm without Sideways Move
 	 * 
-	 * @param noOfQueens
+	 * @param numberOfQueens
 	 * @param displayResult
 	 * @return
 	 */
@@ -41,7 +41,7 @@ public class HillClimbingAlgorithm {
 		hillClimbingUtility.determineHeuristicCostValue(processNode);
 
 		
-			System.out.println("*** BEGIN STATE ***");
+			System.out.println("### BEGIN STATE ###");
 			hillClimbingUtility.displayResult(processNode);
 		
 		
@@ -67,7 +67,7 @@ public class HillClimbingAlgorithm {
 				executionSuccessFlag = true;
 				
 				
-					System.out.println("*** FINAL STATE ***");
+					System.out.println("### FINAL STATE ###");
 					hillClimbingUtility.displayResult(processNode);
 			
 				

@@ -31,7 +31,7 @@ public class HillClimbingWithSidewaysMove {
 	/**
 	 * Hill Climbing Algorithm with Sideways Move
 	 * 
-	 * @param noOfQueens
+	 * @param numberOfQueens
 	 * @param displayResult
 	 * @return
 	 */
@@ -44,7 +44,7 @@ public class HillClimbingWithSidewaysMove {
 		hillClimbingUtility.determineHeuristicCostValue(processNode);
 
 		
-			System.out.println("*** BEGIN STATE ***");
+			System.out.println("### BEGIN STATE ###");
 			hillClimbingUtility.displayResult(processNode);
 		
 		
@@ -76,7 +76,7 @@ public class HillClimbingWithSidewaysMove {
 				executionSuccessFlag = true;
 				
 				
-					System.out.println("*** FINAL STATE ***");
+					System.out.println("### FINAL STATE ###");
 					hillClimbingUtility.displayResult(processNode);
 				
 				
@@ -116,7 +116,7 @@ public class HillClimbingWithSidewaysMove {
 			}
 		}
 
-		//	collect execution statistics
+		//final execution statistics as per rubrics
 		executionStatistics[0] = noOfCorrectSteps;
 		
 		executionStatistics[1] = numberOfExecutionSuccess;

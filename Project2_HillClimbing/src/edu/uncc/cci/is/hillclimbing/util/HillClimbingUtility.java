@@ -175,7 +175,7 @@ public class HillClimbingUtility {
 	/**
 	 * Determine the arbitrary arrangement
 	 * 
-	 * @param noOfQueens
+	 * @param numberOfQueens
 	 * @return
 	 */
 	public ProcessNode formArbitraryArrangement(int noOfQueens) {
@@ -228,5 +228,6 @@ public class HillClimbingUtility {
 		
 		System.out.println("------------------");
 	}
+	
 	
 }
